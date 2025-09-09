@@ -46,8 +46,20 @@ export default function SignupForm({
   const { onNext, onPrevious, onSubmit } = handlers;
 
   return (
-    <div style={{ maxWidth: "650px", margin: "0 auto", padding: "20px" }}>
-      <form onSubmit={onSubmit}>
+    <form
+      onSubmit={onSubmit}
+      style={{
+        width: "100%",
+        maxWidth: "650px",
+        margin: "0 auto",
+        padding: "20px",
+      }}
+    >
+      <div
+        style={{
+          height: "60vh",
+        }}
+      >
         {currentStep === 1 && (
           <AccountStep
             register={register}
@@ -74,18 +86,17 @@ export default function SignupForm({
             isValid={getCurrentStepValid()}
           />
         )}
-
-        <StepNavigation
-          canGoBack={canGoBack}
-          canGoNext={canGoNext}
-          isSubmit={isSubmit}
-          isSubmitting={isSubmitting}
-          isValid={getCurrentStepValid()}
-          onPrevious={onPrevious}
-          onNext={onNext}
-          onSubmit={onSubmit}
-        />
-      </form>
-    </div>
+      </div>
+      <StepNavigation
+        canGoBack={canGoBack}
+        canGoNext={canGoNext}
+        isSubmit={isSubmit}
+        isSubmitting={isSubmitting}
+        isValid={getCurrentStepValid()}
+        onPrevious={onPrevious}
+        onNext={onNext}
+        onSubmit={onSubmit}
+      />
+    </form>
   );
 }

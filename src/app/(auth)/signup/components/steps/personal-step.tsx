@@ -53,24 +53,41 @@ function PersonalStep({
       />
 
       <div style={{ marginBottom: "15px" }}>
-        <label htmlFor="gender">
+        <label>
           성별<span style={{ color: "red" }}> *</span>
         </label>
-        <select
-          id="gender"
-          {...register("gender")}
-          style={{
-            width: "100%",
-            padding: "8px",
-            border: errors.gender ? "1px solid red" : "1px solid #ccc",
-            borderRadius: "4px",
-          }}
-        >
-          <option value="">성별을 선택해주세요</option>
-          <option value="male">남성</option>
-          <option value="female">여성</option>
-          <option value="other">기타</option>
-        </select>
+        <div style={{ 
+          marginTop: "8px", 
+          display: "flex", 
+          gap: "20px" 
+        }}>
+          {[
+            { value: "male", label: "남성" },
+            { value: "female", label: "여성" },
+            { value: "other", label: "기타" },
+          ].map((option) => (
+            <label
+              key={option.value}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "6px",
+                cursor: "pointer",
+              }}
+            >
+              <input
+                type="radio"
+                value={option.value}
+                {...register("gender")}
+                style={{
+                  margin: 0,
+                  cursor: "pointer",
+                }}
+              />
+              <span>{option.label}</span>
+            </label>
+          ))}
+        </div>
         {errors.gender && (
           <span style={{ color: "red", fontSize: "12px", display: "block", marginTop: "4px" }}>
             {errors.gender.message}
@@ -103,8 +120,15 @@ function PersonalStep({
       />
 
       <div style={{ marginBottom: "15px" }}>
-        <label>관심사 (최소 1개 이상 선택)</label>
-        <div style={{ marginTop: "5px" }}>
+        <label>
+          관심사<span style={{ color: "red" }}> *</span>
+        </label>
+        <div style={{ 
+          marginTop: "5px", 
+          display: "grid", 
+          gridTemplateColumns: "1fr 1fr", 
+          gap: "4px 16px" 
+        }}>
           {[
             "기술",
             "스포츠",
