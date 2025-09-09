@@ -29,9 +29,19 @@ export default function MultiStepSignup() {
 
   const phoneNumber = watch("phoneNumber");
 
-  // watch로 실시간 유효성 검사
   const isPhoneNumberValid =
-    phoneNumber && /^01[0-9]-\d{3,4}-\d{4}$/.test(phoneNumber);
+    phoneNumber && /^010-\d{4}-\d{4}$/.test(phoneNumber);
+  
+  const getPhoneNumberError = () => {
+    if (!phoneNumber) return null
+    if (phoneNumber.length < 13) {
+      return "010-XXXX-XXXX 형식으로 입력해주세요";
+    }
+    if (!/^010-\d{4}-\d{4}$/.test(phoneNumber)) {
+      return "010-XXXX-XXXX 형식으로 입력해주세요";
+    }
+    return null;
+  };
 
   const onNext = () => {
     if (currentStep < 3) {
@@ -114,11 +124,7 @@ export default function MultiStepSignup() {
       buttonStates={buttonStates}
       handlers={handlers}
       getCurrentStepValid={getCurrentStepValid}
-      phoneNumberError={
-        phoneNumber && !isPhoneNumberValid
-          ? "올바른 전화번호 형식이 아닙니다. (예: 010-1234-5678)"
-          : null
-      }
+      phoneNumberError={getPhoneNumberError()}
     />
   );
 }

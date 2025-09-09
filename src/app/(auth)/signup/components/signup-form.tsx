@@ -8,6 +8,7 @@ import { FullSignupFormData } from "@/schema/signup";
 import AccountStep from "./steps/account-step";
 import PersonalStep from "./steps/personal-step";
 import SocialStep from "./steps/social-step";
+import StepNavigation from "./ui/step-navigation";
 
 interface SignupFormProps {
   currentStep: number;
@@ -45,69 +46,46 @@ export default function SignupForm({
   const { onNext, onPrevious, onSubmit } = handlers;
 
   return (
-    <form onSubmit={onSubmit}>
-      {currentStep === 1 && (
-        <AccountStep
-          register={register}
-          errors={errors}
-          isValid={getCurrentStepValid()}
-          phoneNumberError={phoneNumberError}
-        />
-      )}
-      {currentStep === 2 && (
-        <PersonalStep
-          register={register}
-          errors={errors}
-          setValue={setValue}
-          watch={watch}
-          isValid={getCurrentStepValid()}
-        />
-      )}
-      {currentStep === 3 && (
-        <SocialStep
-          register={register}
-          errors={errors}
-          watch={watch}
-          setValue={setValue}
-          isValid={getCurrentStepValid()}
-        />
-      )}
+    <div style={{ maxWidth: "650px", margin: "0 auto", padding: "20px" }}>
+      <form onSubmit={onSubmit}>
+        {currentStep === 1 && (
+          <AccountStep
+            register={register}
+            errors={errors}
+            isValid={getCurrentStepValid()}
+            phoneNumberError={phoneNumberError}
+          />
+        )}
+        {currentStep === 2 && (
+          <PersonalStep
+            register={register}
+            errors={errors}
+            setValue={setValue}
+            watch={watch}
+            isValid={getCurrentStepValid()}
+          />
+        )}
+        {currentStep === 3 && (
+          <SocialStep
+            register={register}
+            errors={errors}
+            watch={watch}
+            setValue={setValue}
+            isValid={getCurrentStepValid()}
+          />
+        )}
 
-      <div
-        style={{
-          marginTop: "20px",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <div>
-          {canGoBack && (
-            <button type="button" onClick={onPrevious} disabled={isSubmitting}>
-              이전
-            </button>
-          )}
-        </div>
-        <div>
-          {canGoNext && (
-            <button
-              type="button"
-              onClick={onNext}
-              disabled={isSubmitting || !getCurrentStepValid()}
-            >
-              다음
-            </button>
-          )}
-          {isSubmit && (
-            <button
-              type="submit"
-              disabled={isSubmitting || !getCurrentStepValid()}
-            >
-              {isSubmitting ? "가입 중..." : "가입 완료"}
-            </button>
-          )}
-        </div>
-      </div>
-    </form>
+        <StepNavigation
+          canGoBack={canGoBack}
+          canGoNext={canGoNext}
+          isSubmit={isSubmit}
+          isSubmitting={isSubmitting}
+          isValid={getCurrentStepValid()}
+          onPrevious={onPrevious}
+          onNext={onNext}
+          onSubmit={onSubmit}
+        />
+      </form>
+    </div>
   );
 }

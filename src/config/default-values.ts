@@ -1,4 +1,4 @@
-import { FullSignupFormData } from "./index";
+import { FullSignupFormData } from "../schema/signup/index";
 
 export const signupDefaultValues: FullSignupFormData = {
   // Account Step
@@ -10,7 +10,7 @@ export const signupDefaultValues: FullSignupFormData = {
   // Personal Step
   name: "",
   birthdate: "",
-  gender: undefined,
+  gender: "male",
   address: "",
   job: "",
   interests: [],

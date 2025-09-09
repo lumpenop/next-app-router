@@ -28,8 +28,8 @@ export const stepAccountSchema = z
       .string()
       .min(1, "전화번호는 필수입니다.")
       .regex(
-        /^01[0-9]-\d{3,4}-\d{4}$/,
-        "올바른 전화번호 형식이 아닙니다. (예: 010-1234-5678)"
+        /^010-\d{4}-\d{4}$/,
+        "올바른 전화번호 형식이 아닙니다. (예: 010-XXXX-XXXX)"
       ),
   })
   .refine((data) => data.password === data.confirmPassword, {

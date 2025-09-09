@@ -12,4 +12,4 @@ export type FullSignupFormData = z.infer<typeof fullSignupSchema>;
 export { stepAccountSchema, stepPersonalSchema, stepSocialSchema };
 export type { StepAccountFormData, StepPersonalFormData, StepSocialFormData };
 
-export { signupDefaultValues } from "./default-values";
+export { signupDefaultValues } from "../../config/default-values";
