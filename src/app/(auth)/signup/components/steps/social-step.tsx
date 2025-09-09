@@ -26,7 +26,7 @@ function SocialStep({
 }: SocialStepProps) {
   return (
     <div>
-      <h2>소셜 계정 연결</h2>
+      <h2 style={{ fontWeight: "bold", fontSize: "24px", marginBottom: "20px" }}>소셜 계정 연결</h2>
 
       <div style={{ marginBottom: "20px" }}>
         <h3>소셜 계정 연결 (선택사항)</h3>

@@ -26,7 +26,7 @@ function PersonalStep({
 }: PersonalStepProps) {
   return (
     <div>
-      <h2>개인 정보</h2>
+      <h2 style={{ fontWeight: "bold", fontSize: "24px", marginBottom: "20px" }}>개인 정보</h2>
 
       <FormField
         id="name"

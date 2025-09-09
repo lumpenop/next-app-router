@@ -18,7 +18,7 @@ function AccountStep({
 }: AccountStepProps) {
   return (
     <div>
-      <h2>계정 정보</h2>
+      <h2 style={{ fontWeight: "bold", fontSize: "24px", marginBottom: "20px" }}>계정 정보</h2>
 
       <FormField
         id="username"
