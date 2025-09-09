@@ -57,7 +57,7 @@ export default function SignupForm({
     >
       <div
         style={{
-          height: "60vh",
+          height: "65vh",
         }}
       >
         {currentStep === 1 && (
